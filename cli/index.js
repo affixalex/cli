@@ -36,7 +36,7 @@ const pkg = require('../package.json');
 // ----------------------
 
 const kit = {
-  version: '3.0.1',
+  version: '3.0.2',
   date: '2018-5-20',
 }
 
@@ -380,7 +380,7 @@ if (!semver.gte(process.version, '10.0.0')) {
 }
 
 // Set command / arg options.  A user can specify args/switches to the `reacql`
-// command, or just type `reactql new` and walk through the 'wizard'
+// command, or just type `preql new` and walk through the 'wizard'
 const args = yargs
   .usage(usage)
   .command({
@@ -558,7 +558,7 @@ updateNotifier({
       // There's an update available...
       notice = `${chalk.bold.magenta('PreQL')} CLI update available: `;
       notice += `${chalk.dim(pkg.version)} -> ${chalk.bold.green(update.latest)}\n\n`;
-      notice += `Run ${chalk.cyan('npm i -g preql')} to upgrade.`;
+      notice += `Run ${chalk.cyan('npm i -g preqlcli')} to upgrade.`;
 
       // Wrap `notice` in a box to make it obvious
       notice = boxen(notice, {
