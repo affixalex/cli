@@ -21,17 +21,14 @@ ${banner}
 
 Usage:
 
-Start a new ReactQL project
+Start a new PreQL project
 ${chalk.white.bgRed('reactql new [options]')}
 
 Show help / all options
 ${chalk.white.bgRed('reactql help')}
 
 Show the current version / check for latest version:
-${chalk.white.bgRed('reactql version')}
-
-Follow us on ${emoji.get('bird')} Twitter for news/updates:
-${chalk.underline('https://twitter.com/reactql')}
+${chalk.white.bgRed('preql version')}
 
 ================================================================================
 `.trim();

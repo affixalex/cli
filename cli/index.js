@@ -1,6 +1,7 @@
 /*
-ReactQL starter kit -- https://reactql.org
+Based on ReactQL starter kit -- https://reactql.org
 Authored by Lee Benson <lee@leebenson.com>
+Currently maintained by Alex Caudill <alex.caudill@pm.me>
 */
 
 // ----------------------
@@ -35,8 +36,8 @@ const pkg = require('../package.json');
 // ----------------------
 
 const kit = {
-  version: '2.10.0',
-  date: '2017-11-18',
+  version: '3.0.0',
+  date: '2018-5-20',
 }
 
 // Notice placeholder, for displaying a message back to the user before
@@ -80,15 +81,6 @@ ${chalk.bgRed.white('npm run build')}
 
 Start production server on ${chalk.cyan.underline('http://localhost:4000')} (after building):
 ${chalk.bgRed.white('npm run server')}
-
-Docs/help available at ${chalk.cyan.underline('https://reactql.org')}
-
-Don't forget to ${emoji.get('star')} us on GitHub!
-${chalk.underline('https://github.com/reactql/cli')}
-
-Follow us on ${emoji.get('bird')} Twitter for news/updates:
-${chalk.underline('https://twitter.com/reactql')}
-${separator}
 
   `.trim();
 }
@@ -196,7 +188,7 @@ function startInstallation(installationPath, isUpgrade = false) {
 
   // Download the .zip containing the kit's source code
   request
-    .get(`https://github.com/reactql/kit/archive/${kit.version}.zip`)
+    .get(`https://github.com/affixalex/kit/archive/${kit.version}.zip`)
     .pipe(
       file.on('finish', () => {
         console.log('Extracting archive...');
@@ -309,7 +301,7 @@ function startInstallation(installationPath, isUpgrade = false) {
             // Add/edit `.reactql` file containing the current version, to enable
             // later upgrades
             fse.writeFileSync(
-              path.resolve(installationPath, '.reactql'),
+              path.resolve(installationPath, '.preql'),
               kit.version
             );
 
@@ -349,7 +341,7 @@ function startInstallation(installationPath, isUpgrade = false) {
 
                 if (isUpgrade) {
                   console.log(
-                    chalk.green(`Upgraded project to ReactQL kit v${kit.version}`)
+                    chalk.green(`Upgraded project to PreQL kit v${kit.version}`)
                   );
                 } else {
                   console.log(finished(installationPath));
@@ -380,8 +372,8 @@ Spawning new project...
 `.trimLeft();
 
 // Check that the installed Node version meets requirements: 7.6+
-if (!semver.gte(process.version, '7.6.0')) {
-  let warning = `${chalk.bold('Warning')}: You need Node.js 7.6 or above for ReactQL to work properly.\n`;
+if (!semver.gte(process.version, '10.0.0')) {
+  let warning = `${chalk.bold('Warning')}: You need Node.js 10.0 or above for ReactQL to work properly.\n`;
   warning += `You have ${process.version}. Upgrade @ ${chalk.cyan.underline('https://nodejs.org')}`;
 
   console.log(boxen(chalk.red(warning), { padding: 1 }));
@@ -394,7 +386,7 @@ const args = yargs
   .command({
     command: 'upgrade',
     aliases: ['u'],
-    desc: `Upgrade existing ReactQL project to kit v${kit.version}`,
+    desc: `Upgrade existing PreQL project to kit v${kit.version}`,
     handler() {
       const cwd = process.cwd();
       let currentVersion;
@@ -403,14 +395,14 @@ const args = yargs
         // Check that we're inside an active ReactQL project by looking for a
         // `.reactql` file, and attempting to read its contents
         try {
-          currentVersion = fse.readFileSync(path.resolve(cwd, '.reactql'), 'utf8').trim();
+          currentVersion = fse.readFileSync(path.resolve(cwd, '.preql'), 'utf8').trim();
         } catch(e) {
-          throw new Error('This is not a ReactQL project folder - `.reactql` missing');
+          throw new Error('This is not a PreQL project folder - `.preql` missing');
         }
 
         // Is the contents of `.reactql` a valid semver?
         if (!semver.valid(currentVersion)) {
-          throw new Error('Invalid ReactQL version inside `.reactql`');
+          throw new Error('Invalid PreQL version inside `.preql`');
         }
 
       } catch (e) {
@@ -427,9 +419,9 @@ const args = yargs
       }
 
       // Confirm that the user is happy to overwrite existing files
-      let warning = `${chalk.red.underline('Warning:')} Your ReactQL project will be `;
+      let warning = `${chalk.red.underline('Warning:')} Your PreQL project will be `;
       warning += `upgraded from ${chalk.dim(currentVersion)} -> ${chalk.green(kit.version)}\n`;
-      warning += `By proceeding, existing ReactQL files/dirs will be overwritten (except ${chalk.bgYellow('src/*')})`;
+      warning += `By proceeding, existing PreQL files/dirs will be overwritten (except ${chalk.bgYellow('src/*')})`;
 
       console.log(
         boxen(warning, {
@@ -441,7 +433,7 @@ const args = yargs
         {
           name: 'confirm',
           type: 'confirm',
-          message: `Upgrade to ReactQL kit v${kit.version}?`,
+          message: `Upgrade to PreQL kit v${kit.version}?`,
         },
       ];
 
@@ -471,7 +463,7 @@ const args = yargs
           name: 'name',
           type: 'input',
           message: 'Project name?',
-          default: 'reactql-app',
+          default: 'preql-app',
           validate: validate.name,
           when: validate.option(args.name, validate.name),
         },
@@ -479,7 +471,7 @@ const args = yargs
           name: 'desc',
           type: 'input',
           message: 'Project description?',
-          default: 'New ReactQL project',
+          default: 'New PreQL project',
           validate: validate.desc,
           when: validate.option(args.desc, validate.desc),
         },
@@ -564,9 +556,9 @@ updateNotifier({
 
     } else if (update && semver.lt(pkg.version, update.latest)) {
       // There's an update available...
-      notice = `${chalk.bold.magenta('ReactQL')} CLI update available: `;
+      notice = `${chalk.bold.magenta('PreQL')} CLI update available: `;
       notice += `${chalk.dim(pkg.version)} -> ${chalk.bold.green(update.latest)}\n\n`;
-      notice += `Run ${chalk.cyan('npm i -g reactql')} to upgrade.`;
+      notice += `Run ${chalk.cyan('npm i -g preql')} to upgrade.`;
 
       // Wrap `notice` in a box to make it obvious
       notice = boxen(notice, {

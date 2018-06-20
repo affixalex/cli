@@ -1,6 +1,6 @@
 {
-  "name": "reactql",
-  "version": "4.10.0",
+  "name": "preql",
+  "version": "1.0.0",
   "description": "Universal React+GraphQL starter kit: React, Apollo, Webpack 2, React Router 4, PostCSS, SSR",
   "main": "cli/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leebenson/reactql.git"
+    "url": "git+https://github.com/affixalex/cli.git"
   },
   "keywords": [
     "apollo",
@@ -29,7 +29,7 @@
   "author": "Lee Benson <lee@leebenson.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leebenson/reactql/issues"
+    "url": "https://github.com/affixalex/preql/issues"
   },
   "homepage": "https://reactql.org",
   "bin": {

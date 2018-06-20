@@ -10,10 +10,4 @@ Authored by Lee Benson <lee@leebenson.com>
 const package = require('../package.json');
 
 // ----------------------
-module.exports = `
-██████╗ ███████╗ █████╗  ██████╗████████╗ ██████╗ ██╗
-██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝██╔═══██╗██║
-██████╔╝█████╗  ███████║██║        ██║   ██║   ██║██║   v${package.version}
-██╔══██╗██╔══╝  ██╔══██║██║        ██║   ██║▄▄ ██║██║
-██║  ██║███████╗██║  ██║╚██████╗   ██║   ╚██████╔╝███████╗
-`.trim();
+module.exports = `PreQL v${package.version}`.trim();
