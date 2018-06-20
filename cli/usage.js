@@ -22,10 +22,10 @@ ${banner}
 Usage:
 
 Start a new PreQL project
-${chalk.white.bgRed('reactql new [options]')}
+${chalk.white.bgRed('preql new [options]')}
 
 Show help / all options
-${chalk.white.bgRed('reactql help')}
+${chalk.white.bgRed('preql help')}
 
 Show the current version / check for latest version:
 ${chalk.white.bgRed('preql version')}
