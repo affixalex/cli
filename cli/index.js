@@ -36,7 +36,7 @@ const pkg = require('../package.json');
 // ----------------------
 
 const kit = {
-  version: '3.0.0',
+  version: '3.0.1',
   date: '2018-5-20',
 }
 
