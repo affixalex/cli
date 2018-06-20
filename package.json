@@ -1,5 +1,5 @@
 {
-  "name": "preql",
+  "name": "preqlcli",
   "version": "1.0.0",
   "description": "Universal React+GraphQL starter kit: React, Apollo, Webpack 2, React Router 4, PostCSS, SSR",
   "main": "cli/index.js",
@@ -33,7 +33,7 @@
   },
   "homepage": "https://reactql.org",
   "bin": {
-    "reactql": "bin/reactql"
+    "reactql": "bin/preql"
   },
   "dependencies": {
     "boxen": "^1.2.1",
